@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+<header class="masthead" style="background-image: url({{url_for('static',filename='File_Uploads/498765.jpg')}})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>View/Edit/Delete</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="text-center">
+  <a href="/dashboard"><button class="btn btn-primary float-left">Dashboard Home</button></a>  <a class="btn btn-primary float-right" href="/logout">Log out</a>
+  <p></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">View</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+    {% set link = 'post/' + post.slug %}
+      <tr>
+        <th scope="row">{{post.sno}}</th>
+        <td>{{post.Title}}</td>
+        <td>{{post.Date}}</td>
+        <td><a href={{link}}><i class="fa fa-eye" style="font-size:20px;color:rgb(8, 131, 104)"></i></a></td>
+        <td><a href="/add/{{post.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+        <td><a href="/delete/{{post.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+        <td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+
+{% endblock %}

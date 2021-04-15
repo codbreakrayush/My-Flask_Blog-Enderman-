@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  {%set filename = 'img/' + post.img_file %}
+<header class="masthead" style="background-image: url('{{url_for('static',filename=filename)}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{post.Title}}</h1>
+            <span class="meta">Posted by
+              <a href="#">{{post.post_by}}</a>
+              on {{post.Date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <div class="container">
+    <div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="post-heading">
+      <h2 class="subheading">{{post.Subheading}}</h2>
+    </div>
+  </div>
+</div>
+</div>
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {{post.Content}}<br>
+        {% if post.url is not none %}
+          For more info checkout this link:<br>
+          <a href="{{post.url}}" target="_blank"> <button class="btn btn-primary" type="button" background-color= #4CAF50>Click Here &rarr;</button> </a>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </article>
+
+{% endblock %}
